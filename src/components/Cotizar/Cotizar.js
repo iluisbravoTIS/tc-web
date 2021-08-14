@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import VerticalLinearStepper from './Wizard';
 
 const Styles = styled.div`
     .height100{         
@@ -31,6 +32,7 @@ const Cotizar = () => {
                     <img alt="cotizador.img" className="" src={img} />
                     <div className="sectionContent">
                         <h1>COTIZADOR</h1>
+                        <VerticalLinearStepper/>
                     </div>
 
                 </div>

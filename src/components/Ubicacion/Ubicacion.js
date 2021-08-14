@@ -40,7 +40,7 @@ const Ubicacion = () => {
 
                             <div className="textTitle">
                                 <h2>
-                                    Encuentranos
+                                    Encuéntranos
                                 </h2>
                             </div>
 

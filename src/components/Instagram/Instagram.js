@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
     .height100{         
-        height: 100vh;
+        min-height: 100vh;
         width: 100%;      
     }
 
@@ -16,9 +16,9 @@ const Styles = styled.div`
 
     .sectionContent{
         position: relative;
+        padding: 30px
     }
 `;
-
 
 const Instagram = () => {
 
@@ -30,6 +30,7 @@ const Instagram = () => {
                     <img alt="cotizador.img" className="" src={img} />
                     <div className="sectionContent">
                         <h1>INSTAGRAM</h1>
+                        <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" className="crt-logo crt-tag">Powered by Curator.io</a></div>
                     </div>
 
                 </div>

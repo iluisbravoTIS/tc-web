@@ -50,7 +50,7 @@ const Ubicacion = () => {
     return (
         <>
             <Styles>
-                <div className="height100 img" id="Ubicacion">
+                <div className="height100 bg-green" id="Ubicacion">
                     {/* <img alt="foto.img" src={foto3} /> */}
 
                     <Grid container spacing={3} className="p-5">

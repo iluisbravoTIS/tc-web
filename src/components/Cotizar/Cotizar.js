@@ -32,6 +32,14 @@ const Styles = styled.div`
         background-repeat: no-repeat;
         background-size: cover;
     }
+
+    .MuiTypography-body1 ,
+    .MuiTypography-body2 ,
+    .MuiButton-root
+    {
+        font-family: "Caviar Dreams" !important;
+        font-weight: 900;
+    }
 `;
 
 

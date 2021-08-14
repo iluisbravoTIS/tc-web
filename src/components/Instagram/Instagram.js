@@ -7,11 +7,17 @@ const Styles = styled.div`
         width: 100%;      
     }
 
-    img{
+    .img{
         object-fit: cover;
         height: inherit;
         width: 100%;
-        position: absolute;
+        /* position: absolute; */
+        padding: 0px !important;
+        z-index: -1;
+        /* opacity: 0.8; */
+        background-image: url("./assets/Back.png");
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .sectionContent{
@@ -26,8 +32,8 @@ const Instagram = () => {
     return (
         <>
             <Styles>
-                <div className="height100" id="Instagram">
-                    <img alt="cotizador.img" className="" src={img} />
+                <div className="height100 img" id="Instagram">
+                    {/* <img alt="cotizador.img" className="" src={img} /> */}
                     <div className="sectionContent">
                         <h1>INSTAGRAM</h1>
                         <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" className="crt-logo crt-tag">Powered by Curator.io</a></div>

@@ -8,7 +8,7 @@ const Styles = styled.div`
         min-height: 100vh;
         width: 100%;
         object-fit: cover;
-        padding: 5vh;
+        /* padding: 5vh; */
     }
 
     .mapHeight{
@@ -16,40 +16,62 @@ const Styles = styled.div`
         /* width: 500px; */
         margin: auto;
     }
-    .textTitle{
+
+    .text{        
         background-color: rgb(0, 0, 0, 0.4);
         padding: 10px;
-        margin-bottom:10px;
+        margin: 10px auto;
+        width: fit-content;
+        color: #FFF;
+    }
+    
+    .textTitle{
+        font-weight: 700;
+    }
+    .img{
+        object-fit: cover;
+        height: inherit;
+        width: 100%;
+        /* position: absolute; */
+        padding: 0px !important;
+        z-index: -1;
+        opacity: 0.8;
+        background-image: url("./assets/estudio3.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 `;
 
 
 const Ubicacion = () => {
 
+    const foto3 = "./assets/estudio3.jpeg";
+
     return (
         <>
             <Styles>
-                <div className="height100 bg-sage" id="Ubicacion">
+                <div className="height100 img" id="Ubicacion">
+                    {/* <img alt="foto.img" src={foto3} /> */}
 
-                    <Grid container spacing={3}>
+                    <Grid container spacing={3} className="p-5">
 
                         <Grid item className="text-center" xs={12} md={3}>
                         </Grid>
 
                         <Grid item className="text-center" xs={12} md={6}>
 
-                            <div className="textTitle">
-                                <h2>
-                                    Encuéntranos
-                                </h2>
-                            </div>
 
-                            <div className="textTitle">
-                                <h4>
-                                    Tatuajes chilos es un estudio privado donde atendemos solamente con cita previa para poder
-                                    brindarle un mejor servicio y dedicar ese tiempo solo a ti.
-                                </h4>
-                            </div>
+                            <h2 className="textTitle text">
+                                Encuéntranos
+                            </h2>
+
+
+
+                            <h4 className="text">
+                                Tatuajes chilos es un estudio privado donde atendemos solamente con cita previa para poder
+                                brindarle un mejor servicio y dedicar ese tiempo solo a ti.
+                            </h4>
+
                         </Grid>
 
                         <Grid item className="text-center" xs={12} md={12}>

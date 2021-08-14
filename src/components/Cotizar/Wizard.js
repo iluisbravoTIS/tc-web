@@ -9,7 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import StepMayor from './StepMayor';
 import StepNombre from './StepNombre';
-import StepEmail from './StepEmail';
+import StepUbicacionEspecifica from './StepUbicacionEspecifica';
 import StepUbicacion from './StepUbicacion';
 import StepDimensiones from './StepDimensiones';
 import StepColorPiel from './StepColorPiel';
@@ -36,14 +36,14 @@ const useStyles = makeStyles((theme) => ({
 function getSteps() {
   return [
     'Mayor',
-    'Nombre', 
-    'WhatsApp & Email', 
     'Ubicación del tatuaje', 
+    'Ubicación específica', 
     'Dimensiones del tatuaje',
+    'Referencia',
     'Color de la piel',
     'Color del tatuaje',
-    'Referencia',
-    'Comentarios'
+    'Comentarios',
+    'Nombre'
     ];
 }
 
@@ -52,21 +52,21 @@ function getStepContent(step) {
     case 0:
       return <StepMayor/>;
     case 1:
-      return <StepNombre/>;
-    case 2:
-      return <StepEmail/>;
-    case 3:
       return <StepUbicacion/>;
-    case 4:
+    case 2:
+      return <StepUbicacionEspecifica/>
+    case 3:
       return <StepDimensiones/>;
+    case 4:
+      return <StepReferencia/>; 
     case 5:
-      return <StepColorPiel/>;
+      return <StepColorPiel/>; //
     case 6:
-      return <StepColorTatuaje/>;
+      return <StepColorTatuaje/>; //
     case 7:
-      return <StepReferencia/>;
+      return <StepComentarios/>; //
     case 8:
-      return <StepComentarios/>;
+      return <StepNombre/>;
     default:
       return 'Unknown step';
   }

@@ -5,7 +5,7 @@ const StepNombre = () => {
     return (
         <>
             <div >
-                <p>Nombre y apellidos</p>
+                <p>Nombre y apellidos, WhatsApp o Email</p>
             </div>
         </>
     )

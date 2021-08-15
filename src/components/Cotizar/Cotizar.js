@@ -52,7 +52,7 @@ const Cotizar = () => {
     const [isOnline, setIsOnline] = React.useState(true);
 
     const getIsOnline = async () => {
-        debugger;
+        // debugger;
         // fetch("https://tc-webapi.herokuapp.com/status", {
         //     method: 'GET',
         //     headers: {

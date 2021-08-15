@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
 const StepNombre = (props) => {
     let wizard = props.wizard;
@@ -73,7 +72,6 @@ const StepNombre = (props) => {
                         <TextField fullWidth id="standard-basic" label="Email*" name="email" onChange={onChangeInfo}/>
                     </Grid>
                 </Grid>
-
             </form>
         </>
     )

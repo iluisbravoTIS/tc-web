@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import styled from 'styled-components';
 import { Link } from 'react-scroll';
+import Settings from '../../providers/settings';
 
 const Styles = styled.div`
     .logoBrand{ 
@@ -28,7 +29,6 @@ const Styles = styled.div`
 
 const Appbar = () => {
     let Logo = "/assets/tc-logo.png";
-
     return (
         <Styles>
             {/* <Navbar className="bgOrange" expand="lg">
@@ -46,7 +46,7 @@ const Appbar = () => {
                 </Navbar.Collapse>
 
             </Navbar> */}
-
+            
             <Navbar className="bgOrange" expand="lg">
                 <Container>
                     <Navbar.Brand href="#home">

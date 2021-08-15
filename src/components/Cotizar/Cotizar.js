@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import VerticalLinearStepper from './Wizard';
+import Settings from '../../providers/settings';
 
 const Styles = styled.div`
     .height100{         
@@ -50,7 +51,7 @@ const Cotizar = () => {
 
     const [isOnline, setIsOnline] = React.useState(true);
 
-    const getIsOnline = () => {
+    const getIsOnline = async () => {
         debugger;
         // fetch("https://tc-webapi.herokuapp.com/status", {
         //     method: 'GET',
@@ -65,7 +66,8 @@ const Cotizar = () => {
         //         console.log(json);
         //     })
         //     .catch(err => console.log(err));
-        setIsOnline(true);
+        let result = await Settings.GetStatus();        
+        setIsOnline(result.isOnline);
     }
 
     React.useEffect(() => {
@@ -82,9 +84,9 @@ const Cotizar = () => {
                             COTIZAR
                         </h2>
 
-                        { (isOnline === true) && (<VerticalLinearStepper />) }
-                        { (isOnline !== true) && (<h2 className="text">
-                            Por el momento la agenda se encuentra cerrada se abrirá en los primeros días del siguiente mes...
+                        { (isOnline === "true") && (<VerticalLinearStepper />) }
+                        { (isOnline !== "true") && (<h2 className="text">
+                            Por el momento la agenda se encuentra cerrada se abrirá en los primeros días del siguiente mes.
                         </h2>) }
                         
 

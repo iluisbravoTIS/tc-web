@@ -18,6 +18,7 @@ import StepReferencia from './StepReferencia';
 import StepComentarios from './StepComentarios';
 
 import styled from 'styled-components';
+import Contacts from '../../providers/contact';
 
 const Styles = styled.div`
     .MuiRadio-colorPrimary.Mui-checked{
@@ -79,9 +80,9 @@ const VerticalLinearStepper = () => {
     {
       mayorEdad: false,
       ubicacionTatuaje: "",
-      alto: 0,
-      ancho: 0,
-      foto: "",
+      alto: 10,
+      ancho: 25,
+      foto: "foto",
       colorPiel: "",
       colorTatuaje: "",
       comentarios: "",
@@ -92,99 +93,131 @@ const VerticalLinearStepper = () => {
     }
   );
 
-  const handleNext = () => {
-    console.log(activeStep)
-    setDisabled(true);
-    switch (activeStep) {
-      case 0:
-        let data = wizardData;
-        data.mayorEdad = true;
-        setWizardData(data);
-        break;
-      case 1:        
-        // setWizardData(data);
-        break;
-      case 7:
-        console.log(wizardData)
-        break;
+  const newDeal = async () => {
+    debugger;
+    const existEmail = await Contacts.GetByEmail(wizardData.emailCliente);
+    const exitPhone = await Contacts.GetByPhone(wizardData.telefonoCliente);
 
+    if (existEmail.data.total > 0 || exitPhone.data.total > 0) { //Existe
 
-      default:
-        break;
     }
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+    else {
+      const result = await Contacts.New({
+        confirmacion_de_edad: wizardData.mayorEdad === true ? "true" : "false",
+        email: wizardData.emailCliente,
+        phone: wizardData.telefonoCliente,
+        firstname: wizardData.nombreCliente,
+        lastname: wizardData.apellidoCliente
+    });
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
-
-  function getStepContent(step) {
-    switch (step) {
-      case 0:
-        return <StepMayor setData={() => setWizardData} />;
-      case 1:
-        return <StepUbicacion wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>;
-      case 2:
-        return <StepDimensiones wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>;
-      case 3:
-        return <StepReferencia wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>;
-      case 4:
-        return <StepColorPiel wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>; 
-      case 5:
-        return <StepColorTatuaje wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>;
-      case 6:
-        return <StepComentarios wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>; 
-      case 7:
-        return <StepNombre wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>;
-      default:
-        return 'Unknown step';
-    }
+    console.log(result);
   }
+}
 
-  return (
-    <>
-      <Styles>
-        <div className={classes.root}>
-          <Stepper activeStep={activeStep} orientation="vertical">
-            {steps.map((label, index) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-                <StepContent>
-                  <Typography>{getStepContent(index)}</Typography>
-                  <div className={classes.actionsContainer}>
-                    <div>
-                      <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>Atras</Button>
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={handleNext}
-                        className={classes.button}
-                        disabled={disabled}
-                      >
-                        {activeStep === steps.length - 1 ? 'Enviar' : 'Aceptar'}
+const handleNext = () => {
+  console.log(activeStep)
+  setDisabled(true);
+  switch (activeStep) {
+    case 0:
+      let data = wizardData;
+      data.mayorEdad = true;
+      setWizardData(data);
+      break;
+    case 1:
+      // setWizardData(data);
+      break;
+    case 7:
+      //Buscar
+      newDeal();
+      console.log(wizardData)
+      break;
 
-                      </Button>
-                    </div>
+
+    default:
+      break;
+  }
+  setActiveStep((prevActiveStep) => prevActiveStep + 1);
+};
+
+const handleBack = () => {
+  setActiveStep((prevActiveStep) => prevActiveStep - 1);
+};
+
+const handleReset = () => {
+  setActiveStep(0);
+};
+
+function getStepContent(step) {
+  switch (step) {
+    case 0:
+      return <StepMayor setData={() => setWizardData} />;
+    case 1:
+      return <StepUbicacion wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
+    case 2:
+      return <StepDimensiones wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
+    case 3:
+      return <StepReferencia wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
+    case 4:
+      return <StepColorPiel wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
+    case 5:
+      return <StepColorTatuaje wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
+    case 6:
+      return <StepComentarios wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
+    case 7:
+      return <StepNombre wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
+    default:
+      return 'Unknown step';
+  }
+}
+
+return (
+  <>
+    <Styles>
+      <div className={classes.root}>
+        <Stepper activeStep={activeStep} orientation="vertical">
+          {steps.map((label, index) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+              <StepContent>
+                <Typography>{getStepContent(index)}</Typography>
+                <div className={classes.actionsContainer}>
+                  <div>
+                    <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>Atras</Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleNext}
+                      className={classes.button}
+                    // disabled={disabled}
+                    >
+                      {activeStep === steps.length - 1 ? 'Enviar' : 'Aceptar'}
+
+                    </Button>
                   </div>
-                </StepContent>
-              </Step>
-            ))}
-          </Stepper>
-          {activeStep === steps.length && (
-            <Paper square elevation={0} className={classes.resetContainer}>
-              <Typography>All steps completed - you&apos;re finished</Typography>
-              <Button onClick={handleReset} className={classes.button}>Reset</Button>
-            </Paper>
-          )}
-        </div>
-      </Styles>
-    </>
-  );
+                </div>
+              </StepContent>
+            </Step>
+          ))}
+        </Stepper>
+        {activeStep === steps.length && (
+          <Paper square elevation={0} className={classes.resetContainer}>
+            <Typography>¡Listo!<br />
+              <br />
+              Hemos recibido tus datos, esto sucederá ahora:<br />
+              <br />
+              1. Te mandaremos tu cotización por WhatsApp o Email.<br />
+              2. Si tienes preguntas de tu cotización nos lo haces saber.<br />
+              3. Cuando estés listo, deberás pagar el anticipo especificado en la cotización.<br />
+              4. Deberás enviarnos el comprobante de pago del anticipo.<br />
+              5. Te enviaremos nuestro calendario para que reserves tu cita.<br />
+              6. Te esperamos con mucho gusto de poder atenderte.<br /></Typography>
+            <Button onClick={handleReset} className={classes.button}>Reset</Button>
+          </Paper>
+        )}
+      </div>
+    </Styles>
+  </>
+);
 }
 
 export default VerticalLinearStepper;

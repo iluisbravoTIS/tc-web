@@ -62,7 +62,8 @@ const Ubicacion = () => {
 
 
                             <h2 className="textTitle text">
-                                Encuéntranos
+                                {/* Encuéntranos */}
+                                ENCUÉNTRANOS
                             </h2>
 
 
@@ -78,7 +79,7 @@ const Ubicacion = () => {
 
                             <iframe title="Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3486.675146635573!2d-110.99330858456383!3d29.08574297017394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ce87d05f654199%3A0x1fbdd3823cc1076c!2sTIS%20Consulting%20Group!5e0!3m2!1sen!2smx!4v1628984128869!5m2!1sen!2smx"
                                 width="100%"
-                                height="600"
+                                height="380"
                                 allowfullscreen="true"
                                 loading="lazy"></iframe>
 

@@ -35,8 +35,8 @@ const Styles = styled.div`
     }
 
     .antebrazoizq{
-        left:10px;
-        top:170px;
+        left:12px;
+        top:168px;
         position:absolute;
         width:35px;
         height:80px;
@@ -44,8 +44,8 @@ const Styles = styled.div`
     }
 
     .manoizq{
-        left:-15px;
-        top:240px;
+        left:-11px;
+        top:235px;
         position:absolute;
         width:45px;
         height:60px;
@@ -65,13 +65,13 @@ const Styles = styled.div`
         top:175px;
         position:absolute;
         width:45px;
-        max-height:70px;
+        height:70px;
         object-fit: contain;
     }
 
     .manoder{
-        left:160px;
-        top:240px;
+        left:159px;
+        top:239px;
         position:absolute;
         width:45px;
         height:60px;
@@ -88,47 +88,47 @@ const Styles = styled.div`
     }
     
     .cadera{
-        left:50px;
+        left:46px;
         top:185px;
         position:absolute;
-        width:90px;       
-        height:110px;  
+        width:95px;       
+        height:105px;  
         object-fit: contain;
     }
 
     .musloizq{
-        left:45px;
-        top:275px;
+        left:50px;
+        top:260px;
         position:absolute;  
-        width:45px;
+        width:40px;
         height:110px;
         object-fit: contain;
     }
 
     .piernaizq{
-        left:45px;
-        top:380px;
+        left:50px;
+        top:355px;
         position:absolute;  
         width:45px;
-        height:110px;
+        height:105px;
         object-fit: contain;
     }
 
     .musloder{
         left:95px;
-        top:275px;
+        top:260px;
         position:absolute;  
-        width:45px;
+        width:40px;
         height:115px;
         object-fit: contain;
     }
 
     .piernader{
-        left:90px;
-        top:385px;
+        left:88px;
+        top:360px;
         position:absolute;  
         width:45px;
-        height:105px;
+        height:98px;
         object-fit: contain;
     }
 
@@ -136,6 +136,14 @@ const Styles = styled.div`
         height: 500px;
         position:relative;
         padding-left: 20px;
+    }
+
+    .selected{
+        filter: invert(48%) sepia(13%) saturate(3206%) hue-rotate(56deg) brightness(88%) contrast(80%);
+    }
+
+    .MuiRadio-colorSecondary.Mui-checked{
+        color:#CE7344;
     }
 `;
 
@@ -147,7 +155,7 @@ const StepUbicacion = () => {
     let antebrazoizq = './assets/body/antebrazoizq.png';
     let antebrazoder = './assets/body/antebrazoder.png';
     let pecho = './assets/body/pecho.png';
-    let cadera = './assets/body/cadera.png';
+    let cadera = './assets/body/cadera2.png';
     let musloizq = './assets/body/musloizq.png';
     let musloder = './assets/body/musloder.png';
     let piernaizq = './assets/body/piernaizq.png';
@@ -168,10 +176,10 @@ const StepUbicacion = () => {
         { parte: "Muslo Izquierdo", subPartes: ["Muslo", "Muslo lateral", "Muslo atrás", "Rodilla", "Rodilla atrás"] },
         { parte: "Muslo Derecho", subPartes: ["Muslo", "Muslo lateral", "Muslo atrás", "Rodilla", "Rodilla atrás"] },
         { parte: "Antebrazo Izquierdo", subPartes: ["Antebrazo dentro", "Antebrazo fuera", "Codos"] },
-        { parte: "Antebrazo Derecho", subPartes: ["Antebrazo dentro", "Antebrazo fuera", "Codos"]},
+        { parte: "Antebrazo Derecho", subPartes: ["Antebrazo dentro", "Antebrazo fuera", "Codos"] },
         { parte: "Pierna Izquierda", subPartes: ["Espinilla", "Pantorrilla", "Pantorrilla lateral", "Pie", "Tobillo"] },
         { parte: "Pierna Derecha", subPartes: ["Espinilla", "Pantorrilla", "Pantorrilla lateral", "Pie", "Tobillo"] },
-        { parte: "Mano Izquierda", subPartes: ["Muñeca", "Manos", "Dedos"]},
+        { parte: "Mano Izquierda", subPartes: ["Muñeca", "Manos", "Dedos"] },
         { parte: "Mano Derecha", subPartes: ["Muñeca", "Manos", "Dedos"] }
     ];
 
@@ -190,6 +198,16 @@ const StepUbicacion = () => {
 
     }
 
+    const isSelected = (evt) => {
+        let target = evt;
+
+        if (parteSeleccionada === target) {
+            return true;
+        }
+
+        return false;
+    }
+
 
     return (
         <>
@@ -199,27 +217,28 @@ const StepUbicacion = () => {
                         <div >
                             <p>Ingrese la ubicación del tatuaje</p>
                             <div className="contentBody">
-                                <img name="Cabeza" className="cabeza" alt="cabeza.png" src={cabeza} onClick={changeParte} />
-                                <img name="Brazo Izquierdo" className="brazoizq" alt="cabeza.png" src={brazoizq} onClick={changeParte} />
-                                <img name="Brazo Derecho" className="brazoder" alt="cabeza.png" src={brazoder} onClick={changeParte} />
-                                <img name="Pecho" className="pecho" alt="cabeza.png" src={pecho} onClick={changeParte} />
-                                <img name="Cadera" className="cadera" alt="cabeza.png" src={cadera} onClick={changeParte} />
-                                <img name="Muslo Izquierdo" className="musloizq" alt="cabeza.png" src={musloizq} onClick={changeParte} />
-                                <img name="Muslo Derecho" className="musloder" alt="cabeza.png" src={musloder} onClick={changeParte} />
-                                <img name="Antebrazo Izquierdo" className="antebrazoizq" alt="cabeza.png" src={antebrazoizq} onClick={changeParte} />
-                                <img name="Antebrazo Derecho" className="antebrazoder" alt="cabeza.png" src={antebrazoder} onClick={changeParte} />
-                                <img name="Pierna Izquierda" className="piernaizq" alt="cabeza.png" src={piernaizq} onClick={changeParte} />
-                                <img name="Pierna Derecha" className="piernader" alt="cabeza.png" src={piernader} onClick={changeParte} />
-                                <img name="Mano Derecha" className="manoder" alt="cabeza.png" src={manoder} onClick={changeParte} />
-                                <img name="Mano Izquierda" className="manoizq" alt="cabeza.png" src={manoizq} onClick={changeParte} />
+                                <img name="Cabeza" className={`cabeza ${isSelected("Cabeza") ? "selected" : ""}`} alt="cabeza.png" src={cabeza} onClick={changeParte} />
+                                <img name="Brazo Izquierdo" className={`brazoizq ${isSelected("Brazo Izquierdo") ? "selected" : ""}`} alt="cabeza.png" src={brazoizq} onClick={changeParte} />
+                                <img name="Brazo Derecho" className={`brazoder ${isSelected("Brazo Derecho") ? "selected" : ""}`} alt="cabeza.png" src={brazoder} onClick={changeParte} />
+                                <img name="Pecho" className={`pecho ${isSelected("Pecho") ? "selected" : ""}`} alt="cabeza.png" src={pecho} onClick={changeParte} />
+                                <img name="Cadera" className={`cadera ${isSelected("Cadera") ? "selected" : ""}`} alt="cabeza.png" src={cadera} onClick={changeParte} />
+                                <img name="Muslo Izquierdo" className={`musloizq ${isSelected("Muslo Izquierdo") ? "selected" : ""}`} alt="cabeza.png" src={musloizq} onClick={changeParte} />
+                                <img name="Muslo Derecho" className={`musloder ${isSelected("Muslo Derecho") ? "selected" : ""}`} alt="cabeza.png" src={musloder} onClick={changeParte} />
+                                <img name="Antebrazo Izquierdo" className={`antebrazoizq ${isSelected("Antebrazo Izquierdo") ? "selected" : ""}`} alt="cabeza.png" src={antebrazoizq} onClick={changeParte} />
+                                <img name="Antebrazo Derecho" className={`antebrazoder ${isSelected("Antebrazo Derecho") ? "selected" : ""}`} alt="cabeza.png" src={antebrazoder} onClick={changeParte} />
+                                <img name="Pierna Izquierda" className={`piernaizq ${isSelected("Pierna Izquierda") ? "selected" : ""}`} alt="cabeza.png" src={piernaizq} onClick={changeParte} />
+                                <img name="Pierna Derecha" className={`piernader ${isSelected("Pierna Derecha") ? "selected" : ""}`} alt="cabeza.png" src={piernader} onClick={changeParte} />
+                                <img name="Mano Derecha" className={`manoder ${isSelected("Mano Derecha") ? "selected" : ""}`} alt="cabeza.png" src={manoder} onClick={changeParte} />
+                                <img name="Mano Izquierda" className={`manoizq ${isSelected("Mano Izquierda") ? "selected" : ""}`} alt="cabeza.png" src={manoizq} onClick={changeParte} />
 
                             </div>
                         </div>
                     </Grid>
                     <Grid item xs={12} md={8}>
-                        <h2>{parteSeleccionada}</h2>
+                        <h4><b>{parteSeleccionada || "Selecciona parte del cuerpo"}</b></h4>
                         <FormControl component="fieldset">
-                            <FormLabel component="legend">Partes:</FormLabel>
+
+                            <FormLabel component="legend"></FormLabel>
                             <RadioGroup aria-label="partes" name="partes" onChange={handleChangeSubParteSeleccionada}>
                                 {/* <FormControlLabel value="female" control={<Radio />} label="Female" />
                                 <FormControlLabel value="male" control={<Radio />} label="Male" />

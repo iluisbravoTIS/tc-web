@@ -17,6 +17,24 @@ import StepColorTatuaje from './StepColorTatuaje';
 import StepReferencia from './StepReferencia';
 import StepComentarios from './StepComentarios';
 
+import styled from 'styled-components';
+
+const Styles = styled.div`
+    .MuiRadio-colorSecondary.Mui-checked,
+    .MuiStepIcon-root.MuiStepIcon-completed,
+    .MuiStepIcon-root.MuiStepIcon-active{
+        color:#CE7344;
+    }
+
+    .MuiButton-containedPrimary{
+      background-color: #E9CC64;
+    }
+
+    .MuiButton-containedPrimary:hover{
+      background-color: #B4AE82;
+    }
+`;
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -36,37 +54,37 @@ const useStyles = makeStyles((theme) => ({
 function getSteps() {
   return [
     'Mayor',
-    'Ubicación del tatuaje', 
-    'Ubicación específica', 
+    'Ubicación del tatuaje',
+    'Ubicación específica',
     'Dimensiones del tatuaje',
     'Referencia',
     'Color de la piel',
     'Color del tatuaje',
     'Comentarios',
     'Nombre'
-    ];
+  ];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <StepMayor/>;
+      return <StepMayor />;
     case 1:
-      return <StepUbicacion/>;
+      return <StepUbicacion />;
     case 2:
-      return <StepUbicacionEspecifica/>
+      return <StepUbicacionEspecifica />
     case 3:
-      return <StepDimensiones/>;
+      return <StepDimensiones />;
     case 4:
-      return <StepReferencia/>; 
+      return <StepReferencia />;
     case 5:
-      return <StepColorPiel/>; //
+      return <StepColorPiel />; //
     case 6:
-      return <StepColorTatuaje/>; //
+      return <StepColorTatuaje />; //
     case 7:
-      return <StepComentarios/>; //
+      return <StepComentarios />; //
     case 8:
-      return <StepNombre/>;
+      return <StepNombre />;
     default:
       return 'Unknown step';
   }
@@ -90,32 +108,38 @@ const VerticalLinearStepper = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <Stepper activeStep={activeStep} orientation="vertical">
-        {steps.map((label, index) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-            <StepContent>
-              <Typography>{getStepContent(index)}</Typography>
-              <div className={classes.actionsContainer}>
-                <div>
-                  <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>Back</Button>
-                  <Button variant="contained" color="primary" onClick={handleNext} className={classes.button}>
-                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                  </Button>
-                </div>
-              </div>
-            </StepContent>
-          </Step>
-        ))}
-      </Stepper>
-      {activeStep === steps.length && (
-        <Paper square elevation={0} className={classes.resetContainer}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={handleReset} className={classes.button}>Reset</Button>
-        </Paper>
-      )}
-    </div>
+    <>
+      <Styles>
+        <div className={classes.root}>
+          <Stepper activeStep={activeStep} orientation="vertical">
+            {steps.map((label, index) => (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+                <StepContent>
+                  <Typography>{getStepContent(index)}</Typography>
+                  <div className={classes.actionsContainer}>
+                    <div>
+                      <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>Back</Button>
+                      <Button variant="contained" color="primary" onClick={handleNext} className={classes.button}>
+                        {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                      </Button>
+                    </div>
+                  </div>
+                </StepContent>
+              </Step>
+            ))}
+          </Stepper>
+          {activeStep === steps.length && (
+            <Paper square elevation={0} className={classes.resetContainer}>
+              <Typography>All steps completed - you&apos;re finished</Typography>
+              <Button onClick={handleReset} className={classes.button}>Reset</Button>
+            </Paper>
+          )}
+        </div>
+      </Styles>
+
+    </>
+
   );
 }
 

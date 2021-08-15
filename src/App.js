@@ -21,6 +21,10 @@ const Styles = styled.div`
       font-family: "Caviar Dreams";
     }
 
+    .orange{
+      color:#CE7344;
+    }
+
     .green{
       color: #5B6E11;
     }
@@ -46,6 +50,19 @@ const Styles = styled.div`
     .bg-sage{
       background-color: #B4AE82;
       color: #FFF;
+    }
+
+    
+    .text{        
+        background-color: rgb(0, 0, 0, 0.4);
+        padding: 10px;
+        margin: 10px auto;
+        width: fit-content;
+        color: #FFF;
+    }
+    
+    .textTitle{
+        font-weight: 700;
     }
 `;
 

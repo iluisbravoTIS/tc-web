@@ -53,7 +53,9 @@ const Cotizar = () => {
                 <div className="height100 img" id="Cotizar">
                     {/* <img alt="cotizador.img" className="" src={img} /> */}
                     <div className="sectionContent">
-                        <h1>COTIZADOR</h1>
+                        <h2 className="textTitle text">
+                            COTIZAR
+                        </h2>
                         <VerticalLinearStepper />
                     </div>
 

@@ -2,6 +2,7 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   textarea: {
-    width:500,
+    
     resize: 'none',
   }
 }));
@@ -30,21 +31,25 @@ const StepComentarios = () => {
             <div >
                 <p>Si gustas, agrega descripción o comentarios sobre tu tatuaje.</p>
             </div>
-            <form className={classes.root} noValidate autoComplete="off">
-                <div>
+            
+            <Grid container spacing={3}>
+                <Grid item xs={12} md={12}>
                
-                <textarea
+                <TextField
+                fullWidth
                 className={classes.textarea}
-                maxlength="300"
                 id="outlined-multiline-static"
                 multiline
                 rows={5}
                 variant="outlined"
-                placeholder='Comentarios [300 caracteres]'>
-                 
-                </textarea>
-                </div>
-            </form>
+                placeholder='Comentarios [300 caracteres]'
+                inputProps={{ maxLength: 300 }}
+              >
+                
+                </TextField>
+                </Grid>
+            </Grid>
+            
             
         </>
     )

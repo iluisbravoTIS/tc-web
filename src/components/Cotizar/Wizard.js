@@ -97,21 +97,45 @@ const VerticalLinearStepper = () => {
     debugger;
     const existEmail = await Contacts.GetByEmail(wizardData.emailCliente);
     const exitPhone = await Contacts.GetByPhone(wizardData.telefonoCliente);
-
+    var contactData;
     if (existEmail.data.total > 0 || exitPhone.data.total > 0) { //Existe
 
     }
     else {
-      const result = await Contacts.New({
-        confirmacion_de_edad: wizardData.mayorEdad === true ? "true" : "false",
+      const contactResult = await Contacts.New({
+        confirmacion_de_edad: wizardData.mayorEdad,
         email: wizardData.emailCliente,
         phone: wizardData.telefonoCliente,
         firstname: wizardData.nombreCliente,
         lastname: wizardData.apellidoCliente
-    });
+      });
 
-    console.log(result);
-  }
+      if(contactResult.isOk){
+        contactData.id = contactResult.data.id;
+        contactData.firstname = wizardData.nombreCliente;
+        contactData.lastname = wizardData.apellidoCliente;
+      }else{
+        //Mensaje de error en el alta del contacto
+      }
+    }
+    const today = new Date();
+    const dealResult = await Deal.New(contactData.id, 
+      {
+        dealname: `${contactData.firstname} ${contactData.lastname} ${Math.floor(today)}`, 
+        parte_del_cuerpo_a_tatuar: wizardData.ubicacionTatuaje,
+        alto_del_tatuaje: wizardData.alto, 
+        ancho_del_tatuaje: wizardData.ancho, 
+        color_de_tatuaje: wizardData.colorTatuaje, 
+        comentarios_adicionales: wizardData.comentarios, 
+        color_de_piel: wizardData.colorPiel, 
+        foto_del_tatuaje: wizardData.foto
+      });
+
+    if(dealResult.isOk){
+      
+    }else{
+      //Mostramos error en el deal
+    }
 }
 
 const handleNext = () => {

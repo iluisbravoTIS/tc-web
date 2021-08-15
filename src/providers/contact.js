@@ -34,20 +34,27 @@ const Contacts = (() =>{
                  headers: {
                     "content-type": 'application/json'
                 },
-                mode: 'cors',
+                // mode: 'no-cors',
                 cache: 'default' 
             };
 
-            const rawRespose = await fetch(url, params);
-            const response = rawRespose.json();
-            return response;
+            const rawResponse = await fetch(url, params);
+            if(rawResponse.status == 200){
+                // const {body} = rawRespose;
+                // console.log(body.json());
+                const responseData = await rawResponse.json();
+                const result = responseData;
+                return result;
+            }
+            return { isOk: false};
 
         },
         GetByEmail: async (email) =>{
             try{
                 const url = `${apiURL}/ByEmail/${email}`;
-                const rawRespose = await fetch(url);
-                const response = rawRespose.json();
+                const rawResponse = await fetch(url);
+                const responseData = await rawResponse.json();
+                const response = responseData;
                 return response;
             }catch(e){
                 console.error(e);
@@ -56,8 +63,9 @@ const Contacts = (() =>{
         GetByPhone: async (phone) =>{
             try{
                 const url = `${apiURL}/ByPhone/${phone}`;
-                const rawRespose = await fetch(url);
-                const response = rawRespose.json();
+                const rawResponse = await fetch(url);
+                const responseData = await rawResponse.json();
+                const response = responseData;
                 return response;
             }catch(e){
                 console.error(e);

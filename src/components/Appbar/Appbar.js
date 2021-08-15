@@ -30,17 +30,17 @@ const Styles = styled.div`
 
 const Appbar = () => {
     let Logo = "/assets/tc-logo.png";
-    const ContactNew = async () =>{
-        const data = {
-            firstname:'Panfilo', 
-            lastname:'Rosas', 
-            phone:'6621234862', 
-            email:'panfilo@gmail.com', 
-            confirmacion_de_edad: true
-        };
-        const result = await Contact.New(data);
-        console.log(result);
-    }
+    // const ContactNew = async () =>{
+    //     const data = {
+    //         firstname:'Panfilo', 
+    //         lastname:'Rosas', 
+    //         phone:'6621234862', 
+    //         email:'panfilo@gmail.com', 
+    //         confirmacion_de_edad: true
+    //     };
+    //     const result = await Contact.New(data);
+    //     console.log(result);
+    // }
     return (
         <Styles>
             {/* <Navbar className="bgOrange" expand="lg">
@@ -58,7 +58,7 @@ const Appbar = () => {
                 </Navbar.Collapse>
 
             </Navbar> */}
-            <button onClick={ContactNew}>PROBAR ESTO</button>
+            {/* <button onClick={ContactNew}>PROBAR ESTO</button> */}
             <Navbar className="bgOrange" expand="lg">
                 <Container>
                     <Navbar.Brand href="#home">

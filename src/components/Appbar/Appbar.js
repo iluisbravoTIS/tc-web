@@ -29,6 +29,7 @@ const Styles = styled.div`
 
 const Appbar = () => {
     let Logo = "/assets/tc-logo.png";
+
     return (
         <Styles>
             {/* <Navbar className="bgOrange" expand="lg">

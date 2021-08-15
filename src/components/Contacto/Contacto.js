@@ -33,7 +33,7 @@ const Styles = styled.div`
     }
 
     .height100{         
-        height: 100vh;
+        /* height: 100vh; */
         width: 100%;
         object-fit: cover;
     }

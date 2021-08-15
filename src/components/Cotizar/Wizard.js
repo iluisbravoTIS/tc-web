@@ -99,9 +99,9 @@ const VerticalLinearStepper = () => {
               <Typography>{getStepContent(index)}</Typography>
               <div className={classes.actionsContainer}>
                 <div>
-                  <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>Back</Button>
+                  <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>Atras</Button>
                   <Button variant="contained" color="primary" onClick={handleNext} className={classes.button}>
-                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'Enviar' : 'Aceptar'}
                   </Button>
                 </div>
               </div>

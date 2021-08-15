@@ -164,7 +164,7 @@ const VerticalLinearStepper = () => {
                         color="primary"
                         onClick={handleNext}
                         className={classes.button}
-                        // disabled={disabled}
+                        disabled={disabled}
                       >
                         {activeStep === steps.length - 1 ? 'Enviar' : 'Aceptar'}
 

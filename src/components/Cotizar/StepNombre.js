@@ -2,7 +2,10 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
-const StepNombre = () => {
+const StepNombre = (props) => {
+    let wizard = props.wizard;
+    let setWizard = props.setWizard;
+
     const [nombre, setNombre] = React.useState();
     const [apellido, setEdad] = React.useState();
     const [whats, setWhats] = React.useState();
@@ -15,15 +18,23 @@ const StepNombre = () => {
     
         switch (target) {
             case "nombre":
+                wizard.nombreCliente =value;
+                setWizard(wizard);
                 setNombre(value);
                 break;
-            case "edad":
+            case "apellido":
+                wizard.apellidoCliente =value;
+                setWizard(wizard);
                 setEdad(value);
                 break;
             case "whatsapp":
+                wizard.telefonoCliente =value;
+                setWizard(wizard);
                 setWhats(value);
                 break;
             case "email":
+                wizard.emailCliente =value;
+                setWizard(wizard);
                 setEmail(value);
                 break;
             default:
@@ -52,7 +63,7 @@ const StepNombre = () => {
                         <TextField fullWidth id="standard-basic" label="Nombre*" name="nombre" onChange={onChangeInfo}/>
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <TextField fullWidth id="standard-basic" label="Apellido*" name="edad" onChange={onChangeInfo}/>
+                        <TextField fullWidth id="standard-basic" label="Apellido*" name="apellido" onChange={onChangeInfo}/>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField fullWidth id="standard-basic" label="WhatsApp*" name="whatsapp" onChange={onChangeInfo}/>

@@ -6,12 +6,16 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-const StepColorTatuaje = () => {
-
+const StepColorTatuaje = (props) => {
+    let wizard = props.wizard;
+    let setWizard = props.setWizard;
     const [value, setValue] = React.useState('0');
 
     const handleChange = (event) => {
-        setValue(event.target.value);
+        let colorTatuaje = event.target.value;
+        wizard.colorTatuaje = colorTatuaje;
+        setWizard(wizard);
+        setValue(colorTatuaje);
     };
 
     return (
@@ -19,8 +23,8 @@ const StepColorTatuaje = () => {
             <FormControl component="fieldset">
             <FormLabel component="legend">Mi tatuaje será</FormLabel>
             <RadioGroup name="color" value={value} onChange={handleChange}>
-                <FormControlLabel control={<Radio color="primary" />} value="0" label="Color" />
-                <FormControlLabel control={<Radio color="primary" />} value="1" label="Blanco y Negro" />
+                <FormControlLabel control={<Radio color="primary" />} value="Color" label="Color" />
+                <FormControlLabel control={<Radio color="primary" />} value="Blanco y Negro" label="Blanco y Negro" />
             </RadioGroup>
             </FormControl>
         </>

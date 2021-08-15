@@ -36,48 +36,48 @@ const useStyles = makeStyles((theme) => ({
 function getSteps() {
   return [
     'Mayor',
-    'Ubicación del tatuaje', 
-    'Ubicación específica', 
+    'Ubicación del tatuaje',
+    'Ubicación específica',
     'Dimensiones del tatuaje',
-    'Referencia',
+    'Imagén de referencia',
     'Color de la piel',
     'Color del tatuaje',
     'Comentarios',
     'Nombre'
-    ];
+  ];
 }
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <StepMayor/>;
-    case 1:
-      return <StepUbicacion/>;
-    case 2:
-      return <StepUbicacionEspecifica/>
-    case 3:
-      return <StepDimensiones/>;
-    case 4:
-      return <StepReferencia/>; 
-    case 5:
-      return <StepColorPiel/>; //
-    case 6:
-      return <StepColorTatuaje/>; //
-    case 7:
-      return <StepComentarios/>; //
-    case 8:
-      return <StepNombre/>;
-    default:
-      return 'Unknown step';
-  }
-}
+
 
 const VerticalLinearStepper = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
 
+  const [wizardData, setWizardData] = React.useState(
+    {
+      mayorEdad: false,
+      ubicacionTatuaje: "",
+      ubicacionTatuajeEspecifico: "",
+    }
+  );
+
   const handleNext = () => {
+    console.log(activeStep)
+    switch (activeStep) {
+      case 0:
+        let data= wizardData;
+        data.mayorEdad = true;
+        setWizardData(data);
+        break;
+      case 8:
+        console.log(wizardData)
+        break;
+
+
+      default:
+        break;
+    }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
@@ -88,6 +88,31 @@ const VerticalLinearStepper = () => {
   const handleReset = () => {
     setActiveStep(0);
   };
+
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return <StepMayor setData={() => setWizardData} />;
+      case 1:
+        return <StepUbicacion />;
+      case 2:
+        return <StepUbicacionEspecifica />
+      case 3:
+        return <StepDimensiones />;
+      case 4:
+        return <StepReferencia/>;
+      case 5:
+        return <StepColorPiel />; //
+      case 6:
+        return <StepColorTatuaje />; //
+      case 7:
+        return <StepComentarios />; //
+      case 8:
+        return <StepNombre />;
+      default:
+        return 'Unknown step';
+    }
+  }
 
   return (
     <div className={classes.root}>

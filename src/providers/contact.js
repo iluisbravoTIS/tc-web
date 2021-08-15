@@ -1,17 +1,18 @@
 import validator from 'validator'
 
 
+
 const Contacts = (() =>{
     
     const apiURL = 'https://tc-webapi.herokuapp.com/contact'
     return {
-        New: async ({firstname, lastname, mobilephone, email, confirmacion_de_edad}) =>{
+        New: async ({firstname, lastname, phone, email, confirmacion_de_edad}) =>{
             //Validaciones
             if(!firstname)
                 return { isOk: false, message: 'No se ha especificado el primer nombre'};
             if(!lastname)
                 return { isOk: false, message: 'No se ha especificado el apellido'};
-            if(!validator.isMobilePhone(mobilephone))
+            if(!validator.isMobilePhone(phone))
                 return { isOk: false, message: 'Ingrese un telefono valido'};
             if(!validator.isEmail(email)) 
                 return { isOk: false, message: 'Ingrese un email valido'};
@@ -21,7 +22,7 @@ const Contacts = (() =>{
             const data = {
                 firstname,
                 lastname,
-                mobilephone,
+                phone,
                 email,
                 confirmacion_de_edad
             }
@@ -29,7 +30,7 @@ const Contacts = (() =>{
             const url = `${apiURL}`;
             var params = {
                  method: 'POST',
-                 body: data,
+                 body: JSON.stringify(data),
                  headers: {
                     "content-type": 'application/json'
                 },

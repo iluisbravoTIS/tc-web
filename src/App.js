@@ -67,24 +67,6 @@ const Styles = styled.div`
 `;
 
 const App = () => {
-
-  const [isOnline, setIsOnline] = React.useState(true);
-
-  const getIsOnline = () => {
-    debugger;
-    fetch("https://tc-webapi.herokuapp.com/status")
-      .then(res => res.json())
-      .then(json => {
-        debugger;
-        console.log(json);
-      })
-      .catch(err => console.log(err));
-  }
-
-  React.useEffect(() => {
-    getIsOnline();
-  });
-
   return (
     <>
       <Styles>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import VerticalLinearStepper from './Wizard';
+import Settings from '../../providers/settings';
 
 const Styles = styled.div`
     .height100{         
@@ -47,6 +48,32 @@ const Cotizar = () => {
 
     let img = "./assets/Back.png";
 
+
+    const [isOnline, setIsOnline] = React.useState(true);
+
+    const getIsOnline = async () => {
+        debugger;
+        // fetch("https://tc-webapi.herokuapp.com/status", {
+        //     method: 'GET',
+        //     headers: {
+        //         'Accept': 'application/json, text/plain, */*',
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+        //     .then(res => res.json())
+        //     .then(json => {
+        //         debugger;
+        //         console.log(json);
+        //     })
+        //     .catch(err => console.log(err));
+        let result = await Settings.GetStatus();        
+        setIsOnline(result.isOnline);
+    }
+
+    React.useEffect(() => {
+        getIsOnline();
+    });
+
     return (
         <>
             <Styles>
@@ -56,7 +83,13 @@ const Cotizar = () => {
                         <h2 className="textTitle text">
                             COTIZAR
                         </h2>
-                        <VerticalLinearStepper />
+
+                        { (isOnline === "true") && (<VerticalLinearStepper />) }
+                        { (isOnline !== "true") && (<h2 className="text">
+                            Por el momento la agenda se encuentra cerrada se abrirá en los primeros días del siguiente mes.
+                        </h2>) }
+                        
+
                     </div>
 
                 </div>

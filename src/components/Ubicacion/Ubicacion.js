@@ -53,7 +53,7 @@ const Ubicacion = () => {
                 <div className="height100 bg-green" id="Ubicacion">
                     {/* <img alt="foto.img" src={foto3} /> */}
 
-                    <Grid container spacing={3} className="p-5">
+                    <Grid container spacing={0} className="p-5">
 
                         <Grid item className="text-center" xs={12} md={3}>
                         </Grid>

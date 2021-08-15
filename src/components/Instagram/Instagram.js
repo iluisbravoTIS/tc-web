@@ -35,7 +35,11 @@ const Instagram = () => {
                 <div className="height100 img" id="Instagram">
                     {/* <img alt="cotizador.img" className="" src={img} /> */}
                     <div className="sectionContent">
-                        <h1>INSTAGRAM</h1>
+                        <h2 className="textTitle text">
+                            {/* Encuéntranos */}
+                            INSTAGRAM
+                        </h2>
+
                         <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" className="crt-logo crt-tag">Powered by Curator.io</a></div>
                     </div>
 

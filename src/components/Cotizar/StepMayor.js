@@ -1,6 +1,8 @@
 import React from 'react';
 
-const StepNombre = () => {
+const StepNombre = (props) => {
+
+    let setWizardData = props.setData;
 
     return (
         <>

@@ -147,7 +147,11 @@ const Styles = styled.div`
     }
 `;
 
-const StepUbicacion = () => {
+const StepUbicacion = (props) => {
+
+    let wizard = props.wizard;
+    let setWizard = props.setWizard;
+    let setDisabled = props.setDisabledFunc;
 
     let cabeza = './assets/body/cabeza.png';
     let brazoizq = './assets/body/brazoizq.png';
@@ -165,13 +169,13 @@ const StepUbicacion = () => {
 
     const [parteSeleccionada, setParteSeleccionada] = React.useState();
     const [subPartesSeleccionada, setSubPartesSeleccionada] = React.useState([]);
-    const [subParteSeleccionada, setSubParteSeleccionada] = React.useState([]);
+    const [subParteSeleccionada, setSubParteSeleccionada] = React.useState([]);    
 
     const partesEspecificas = [
-        { parte: "Cabeza", subPartes: ["Detrás de la oreja", "Oreja", "Cuello frente", "Cuello lado", "Nuca", "Cabeza"] },
+        { parte: "Cabeza", subPartes: ["Cabeza", "Nuca", "Cuello frente", "Cuello lado", "Oreja", "Oreja atrás"] },
         { parte: "Brazo Izquierdo", subPartes: ["Hombro", "Bicep", "Tricep dentro", "Tricep detrás"] },
         { parte: "Brazo Derecho", subPartes: ["Hombro", "Bicep", "Tricep dentro", "Tricep detrás"] },
-        { parte: "Pecho", subPartes: ["Clavícula", "Pecho", "Esternón", "Costillas", "Espalda", "Trapecio", "Abdomen"] },
+        { parte: "Torso", subPartes: ["Pecho", "Espalda", "Trapecio", "Clavícula", "Costillas", "Esternón", "Abdomen"] },
         { parte: "Cadera", subPartes: ["Cadera", "Pelvis", "Nalga", "Privada"] },
         { parte: "Muslo Izquierdo", subPartes: ["Muslo", "Muslo lateral", "Muslo atrás", "Rodilla", "Rodilla atrás"] },
         { parte: "Muslo Derecho", subPartes: ["Muslo", "Muslo lateral", "Muslo atrás", "Rodilla", "Rodilla atrás"] },
@@ -188,12 +192,19 @@ const StepUbicacion = () => {
         let target = evt.target.name;
 
         let partes = partesEspecificas.filter(pe => pe.parte === target);
+
         setParteSeleccionada(target);
+
         setSubPartesSeleccionada(partes[0].subPartes);
     }
 
     const handleChangeSubParteSeleccionada = (evt) => {
         let subParte = evt.target.value;
+        let parteCompleta = parteSeleccionada + " " + subParte;
+        wizard.ubicacionTatuaje = parteCompleta;
+
+        setWizard(wizard);
+        setDisabled(false);
         setSubParteSeleccionada(subParte);
 
     }
@@ -209,6 +220,8 @@ const StepUbicacion = () => {
     }
 
 
+
+
     return (
         <>
             <Styles>
@@ -220,7 +233,7 @@ const StepUbicacion = () => {
                                 <img name="Cabeza" className={`cabeza ${isSelected("Cabeza") ? "selected" : ""}`} alt="cabeza.png" src={cabeza} onClick={changeParte} />
                                 <img name="Brazo Izquierdo" className={`brazoizq ${isSelected("Brazo Izquierdo") ? "selected" : ""}`} alt="cabeza.png" src={brazoizq} onClick={changeParte} />
                                 <img name="Brazo Derecho" className={`brazoder ${isSelected("Brazo Derecho") ? "selected" : ""}`} alt="cabeza.png" src={brazoder} onClick={changeParte} />
-                                <img name="Pecho" className={`pecho ${isSelected("Pecho") ? "selected" : ""}`} alt="cabeza.png" src={pecho} onClick={changeParte} />
+                                <img name="Torso" className={`pecho ${isSelected("Torso") ? "selected" : ""}`} alt="cabeza.png" src={pecho} onClick={changeParte} />
                                 <img name="Cadera" className={`cadera ${isSelected("Cadera") ? "selected" : ""}`} alt="cabeza.png" src={cadera} onClick={changeParte} />
                                 <img name="Muslo Izquierdo" className={`musloizq ${isSelected("Muslo Izquierdo") ? "selected" : ""}`} alt="cabeza.png" src={musloizq} onClick={changeParte} />
                                 <img name="Muslo Derecho" className={`musloder ${isSelected("Muslo Derecho") ? "selected" : ""}`} alt="cabeza.png" src={musloder} onClick={changeParte} />

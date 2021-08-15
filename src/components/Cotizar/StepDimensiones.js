@@ -99,7 +99,15 @@ const StepDimensiones = () => {
 
                             <Grid item xs={12}>
                                 <InputLabel htmlFor="alto">Alto</InputLabel>
-                                <Input id="alto" aria-describedby="helper-altura" onChange={onChangeInfo}/>
+                                <Input  
+                                    id="alto" 
+                                    aria-describedby="helper-altura" 
+                                    type="number"
+                                    pattern="[0-9]{0,5}"
+                                    min={0}
+                                    max={250}
+                                    onChange={onChangeInfo}
+                                    />
                                 <FormHelperText id="helper-altura">Tamaño en cm.</FormHelperText>
                             </Grid>
                         </FormControl>
@@ -113,6 +121,7 @@ const StepDimensiones = () => {
                                     pattern="[0-9]{0,5}"
                                     min={0}
                                     max={250}
+                                    onChange={onChangeInfo}
                                     />
                                 <FormHelperText id="helper-ancho">Tamaño en cm.</FormHelperText>
                             </Grid>

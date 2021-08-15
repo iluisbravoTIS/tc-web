@@ -101,7 +101,7 @@ const VerticalLinearStepper = () => {
         data.mayorEdad = true;
         setWizardData(data);
         break;
-      case 1:        
+      case 1:
         // setWizardData(data);
         break;
       case 7:
@@ -128,19 +128,19 @@ const VerticalLinearStepper = () => {
       case 0:
         return <StepMayor setData={() => setWizardData} />;
       case 1:
-        return <StepUbicacion wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>;
+        return <StepUbicacion wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
       case 2:
-        return <StepDimensiones wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>;
+        return <StepDimensiones wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
       case 3:
-        return <StepReferencia wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>;
+        return <StepReferencia wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
       case 4:
-        return <StepColorPiel wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>; 
+        return <StepColorPiel wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
       case 5:
-        return <StepColorTatuaje wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>;
+        return <StepColorTatuaje wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
       case 6:
-        return <StepComentarios wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>; 
+        return <StepComentarios wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
       case 7:
-        return <StepNombre wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled}/>;
+        return <StepNombre wizard={wizardData} setWizard={setWizardData} setDisabledFunc={setDisabled} />;
       default:
         return 'Unknown step';
     }
@@ -164,7 +164,7 @@ const VerticalLinearStepper = () => {
                         color="primary"
                         onClick={handleNext}
                         className={classes.button}
-                        // disabled={disabled}
+                      // disabled={disabled}
                       >
                         {activeStep === steps.length - 1 ? 'Enviar' : 'Aceptar'}
 
@@ -177,7 +177,16 @@ const VerticalLinearStepper = () => {
           </Stepper>
           {activeStep === steps.length && (
             <Paper square elevation={0} className={classes.resetContainer}>
-              <Typography>All steps completed - you&apos;re finished</Typography>
+              <Typography>¡Listo!<br />
+                <br />
+                Hemos recibido tus datos, esto sucederá ahora:<br />
+                <br />
+                1. Te mandaremos tu cotización por WhatsApp o Email.<br />
+                2. Si tienes preguntas de tu cotización nos lo haces saber.<br />
+                3. Cuando estés listo, deberás pagar el anticipo especificado en la cotización.<br />
+                4. Deberás enviarnos el comprobante de pago del anticipo.<br />
+                5. Te enviaremos nuestro calendario para que reserves tu cita.<br />
+                6. Te esperamos con mucho gusto de poder atenderte.<br /></Typography>
               <Button onClick={handleReset} className={classes.button}>Reset</Button>
             </Paper>
           )}

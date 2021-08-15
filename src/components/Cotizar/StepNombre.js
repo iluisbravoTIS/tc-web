@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 const StepNombre = (props) => {
     let wizard = props.wizard;
     let setWizard = props.setWizard;
+    let setDisabled = props.setDisabledFunc;
 
     const [nombre, setNombre] = React.useState();
     const [apellido, setEdad] = React.useState();
@@ -13,32 +14,39 @@ const StepNombre = (props) => {
 
 
     const onChangeInfo = (evt) => {
-    let target = evt.target.name;
-    let value = evt.target.value;
-    
+        let target = evt.target.name;
+        let value = evt.target.value;
+
         switch (target) {
             case "nombre":
-                wizard.nombreCliente =value;
+                wizard.nombreCliente = value;
                 setWizard(wizard);
                 setNombre(value);
                 break;
             case "apellido":
-                wizard.apellidoCliente =value;
+                wizard.apellidoCliente = value;
                 setWizard(wizard);
                 setEdad(value);
                 break;
             case "whatsapp":
-                wizard.telefonoCliente =value;
+                wizard.telefonoCliente = value;
                 setWizard(wizard);
                 setWhats(value);
                 break;
             case "email":
-                wizard.emailCliente =value;
+                wizard.emailCliente = value;
                 setWizard(wizard);
                 setEmail(value);
                 break;
             default:
                 break;
+        }
+
+        if (wizard.nombreCliente && wizard.apellidoCliente && wizard.telefonoCliente && wizard.emailCliente) {
+            setDisabled(false);
+        }
+        else {
+            setDisabled(true);
         }
     }
 
@@ -60,16 +68,16 @@ const StepNombre = (props) => {
             <form noValidate autoComplete="off" onSubmit={submitInfo}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
-                        <TextField fullWidth id="standard-basic" label="Nombre*" name="nombre" onChange={onChangeInfo}/>
+                        <TextField fullWidth id="standard-basic" label="Nombre*" name="nombre" onChange={onChangeInfo} />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <TextField fullWidth id="standard-basic" label="Apellido*" name="apellido" onChange={onChangeInfo}/>
+                        <TextField fullWidth id="standard-basic" label="Apellido*" name="apellido" onChange={onChangeInfo} />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <TextField fullWidth id="standard-basic" label="WhatsApp*" name="whatsapp" onChange={onChangeInfo}/>
+                        <TextField fullWidth id="standard-basic" label="WhatsApp*" name="whatsapp" onChange={onChangeInfo} />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <TextField fullWidth id="standard-basic" label="Email*" name="email" onChange={onChangeInfo}/>
+                        <TextField fullWidth id="standard-basic" label="Email*" name="email" onChange={onChangeInfo} />
                     </Grid>
                 </Grid>
             </form>

@@ -8,6 +8,7 @@ import Radio from '@material-ui/core/Radio';
 const StepColorPiel = (props) => {
     let wizard = props.wizard;
     let setWizard = props.setWizard;
+    let setDisabled = props.setDisabledFunc;
 
     const [selectedValue, setSelectedValue] = React.useState('a');
 
@@ -16,6 +17,7 @@ const StepColorPiel = (props) => {
         wizard.colorPiel = tipoPiel;
         setWizard(wizard);
         setSelectedValue(tipoPiel);
+        setDisabled(false);
     };
     return (
         <>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { FormControl, Grid, InputLabel, Input, FormHelperText} from '@material-ui/core';
+import { FormControl, Grid, InputLabel, Input, FormHelperText } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
 import Modal from '@material-ui/core/Modal';
 import SimpleModal from './ModelaStepDimensiones';
@@ -8,34 +8,38 @@ import { OpenInBrowser } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      maxWidth: 345,
+        maxWidth: 345,
     },
     media: {
-      height: 0,
-      paddingTop: '56.25%', // 16:9
-      backgroundSize: "contain"
+        height: 0,
+        paddingTop: '56.25%', // 16:9
+        backgroundSize: "contain"
     }
-  })
+})
 );
 
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
-  }
+}
 
 function getModalStyle() {
     const top = 50 + rand();
     const left = 50 + rand();
-  
+
     return {
-      top: `${top}%`,
-      left: `${left}%`,
-      transform: `translate(-${top}%, -${left}%)`,
+        top: `${top}%`,
+        left: `${left}%`,
+        transform: `translate(-${top}%, -${left}%)`,
     };
-  }
+}
 
 
-const StepDimensiones = () => {
+const StepDimensiones = (props) => {
+    let wizard = props.wizard;
+    let setWizard = props.setWizard;
+    let setDisabled = props.setDisabledFunc;
+
     const [open, setOpen] = React.useState(false);
 
     const [modalStyle] = React.useState(getModalStyle);
@@ -63,26 +67,36 @@ const StepDimensiones = () => {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
-    const [alto, setAlto] = React.useState();
-    const [ancho, setAncho] = React.useState();
+    const [alto, setAlto] = React.useState(0);
+    const [ancho, setAncho] = React.useState(0);
 
 
     const onChangeInfo = (evt) => {
         let target = evt.target.name;
         let value = evt.target.value;
-        
+
         switch (target) {
             case "alto":
+                wizard.alto = value;
+                setWizard(wizard);
                 setAlto(value);
                 break;
             case "ancho":
+                wizard.ancho = value;
+                setWizard(wizard);
                 setAncho(value);
                 break;
             default:
                 break;
         }
+        debugger;
+        if (wizard.alto > 0 && wizard.ancho > 0) {
+            setDisabled(false);
+        } else {
+            setDisabled(true);
+        }
     }
-    
+
     //<img width="30%" heigh="30%" src="./assets/ejemplo_tatuaje.png" alt="ejemplo de tatuaje"/>-->
     return (
         <>
@@ -99,30 +113,30 @@ const StepDimensiones = () => {
 
                             <Grid item xs={12}>
                                 <InputLabel htmlFor="alto">Alto</InputLabel>
-                                <Input  
-                                    id="alto" 
-                                    aria-describedby="helper-altura" 
+                                <Input
+                                    name="alto"
+                                    aria-describedby="helper-altura"
                                     type="number"
                                     pattern="[0-9]{0,5}"
                                     min={0}
                                     max={250}
                                     onChange={onChangeInfo}
-                                    />
+                                />
                                 <FormHelperText id="helper-altura">Tamaño en cm.</FormHelperText>
                             </Grid>
                         </FormControl>
                         <FormControl>
                             <Grid item xs={12}>
                                 <InputLabel htmlFor="ancho">Ancho</InputLabel>
-                                <Input  
-                                    id="ancho" 
-                                    aria-describedby="helper-ancho" 
+                                <Input
+                                    name="ancho"
+                                    aria-describedby="helper-ancho"
                                     type="number"
                                     pattern="[0-9]{0,5}"
                                     min={0}
                                     max={250}
                                     onChange={onChangeInfo}
-                                    />
+                                />
                                 <FormHelperText id="helper-ancho">Tamaño en cm.</FormHelperText>
                             </Grid>
                         </FormControl>

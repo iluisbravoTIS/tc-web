@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 const StepComentarios = (props) => {
   let wizard = props.wizard;
   let setWizard = props.setWizard;
+  let setDisabled = props.setDisabledFunc;
 
   const classes = useStyles();
   const [value, setValue] = React.useState("");
@@ -29,6 +30,13 @@ const StepComentarios = (props) => {
     wizard.comentarios = newText;
     setWizard(wizard);
     setValue(newText);
+
+    if (newText.length > 0) {
+      setDisabled(false);
+    }
+    else {
+      setDisabled(true);
+    }
   };
 
   return (

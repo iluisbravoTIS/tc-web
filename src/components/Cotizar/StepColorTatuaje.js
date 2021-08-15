@@ -9,6 +9,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 const StepColorTatuaje = (props) => {
     let wizard = props.wizard;
     let setWizard = props.setWizard;
+    let setDisabled = props.setDisabledFunc;
     const [value, setValue] = React.useState('0');
 
     const handleChange = (event) => {
@@ -16,16 +17,17 @@ const StepColorTatuaje = (props) => {
         wizard.colorTatuaje = colorTatuaje;
         setWizard(wizard);
         setValue(colorTatuaje);
+        setDisabled(false);
     };
 
     return (
         <>
             <FormControl component="fieldset">
-            <FormLabel component="legend">Mi tatuaje será</FormLabel>
-            <RadioGroup name="color" value={value} onChange={handleChange}>
-                <FormControlLabel control={<Radio color="primary" />} value="Color" label="Color" />
-                <FormControlLabel control={<Radio color="primary" />} value="Blanco y Negro" label="Blanco y Negro" />
-            </RadioGroup>
+                <FormLabel component="legend">Mi tatuaje será</FormLabel>
+                <RadioGroup name="color" value={value} onChange={handleChange}>
+                    <FormControlLabel control={<Radio color="primary" />} value="Color" label="Color" />
+                    <FormControlLabel control={<Radio color="primary" />} value="Blanco y Negro" label="Blanco y Negro" />
+                </RadioGroup>
             </FormControl>
         </>
     )

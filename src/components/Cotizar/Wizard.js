@@ -80,8 +80,8 @@ const VerticalLinearStepper = () => {
     {
       mayorEdad: false,
       ubicacionTatuaje: "",
-      alto: 10,
-      ancho: 25,
+      alto: 0,
+      ancho: 0,
       foto: "foto",
       colorPiel: "",
       colorTatuaje: "",
@@ -188,7 +188,7 @@ return (
                       color="primary"
                       onClick={handleNext}
                       className={classes.button}
-                    // disabled={disabled}
+                    disabled={disabled}
                     >
                       {activeStep === steps.length - 1 ? 'Enviar' : 'Aceptar'}
 

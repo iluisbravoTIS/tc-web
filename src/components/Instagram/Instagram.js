@@ -3,22 +3,28 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
     .height100{         
-        height: 100vh;
+        min-height: 100vh;
         width: 100%;      
     }
 
-    img{
+    .img{
         object-fit: cover;
         height: inherit;
         width: 100%;
-        position: absolute;
+        /* position: absolute; */
+        padding: 0px !important;
+        z-index: -1;
+        /* opacity: 0.8; */
+        background-image: url("./assets/Back.png");
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .sectionContent{
         position: relative;
+        padding: 30px
     }
 `;
-
 
 const Instagram = () => {
 
@@ -26,10 +32,11 @@ const Instagram = () => {
     return (
         <>
             <Styles>
-                <div className="height100" id="Instagram">
-                    <img alt="cotizador.img" className="" src={img} />
+                <div className="height100 img" id="Instagram">
+                    {/* <img alt="cotizador.img" className="" src={img} /> */}
                     <div className="sectionContent">
                         <h1>INSTAGRAM</h1>
+                        <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" className="crt-logo crt-tag">Powered by Curator.io</a></div>
                     </div>
 
                 </div>

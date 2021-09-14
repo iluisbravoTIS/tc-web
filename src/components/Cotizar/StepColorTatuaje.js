@@ -12,6 +12,16 @@ const StepColorTatuaje = (props) => {
     let setDisabled = props.setDisabledFunc;
     const [value, setValue] = React.useState('0');
 
+    React.useEffect(() => {
+        if (wizard.colorTatuaje !== "") {
+            setValue(wizard.colorTatuaje );
+            setDisabled(false);
+        }
+        else {
+            setDisabled(true);
+        }
+    }, []);
+
     const handleChange = (event) => {
         let colorTatuaje = event.target.value;
         wizard.colorTatuaje = colorTatuaje;
@@ -29,6 +39,7 @@ const StepColorTatuaje = (props) => {
                     <FormControlLabel control={<Radio color="primary" />} value="Blanco y Negro" label="Blanco y Negro" />
                 </RadioGroup>
             </FormControl>
+            <br />
         </>
     )
 }

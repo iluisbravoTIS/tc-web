@@ -12,6 +12,16 @@ const StepColorPiel = (props) => {
 
     const [selectedValue, setSelectedValue] = React.useState('a');
 
+    React.useEffect(() => {
+        if (wizard.colorPiel !== "") {
+            setSelectedValue(wizard.colorPiel );
+            setDisabled(false);
+        }
+        else {
+            setDisabled(true);
+        }
+    }, []);
+
     const handleChange = (event) => {
         let tipoPiel = event.target.value;
         wizard.colorPiel = tipoPiel;
@@ -25,7 +35,7 @@ const StepColorPiel = (props) => {
                 <p>Mi color de piel es:</p>
             </div>
             <div>
-                <div style={{ backgroundColor: '#faffeb', width: '150px' }}>
+                <div style={{ backgroundColor: '#faffeb', width: '150px', color: "black", fontWeight: 900 }}>
                     <Radio
                         checked={selectedValue === 'Tipo I'}
                         onChange={handleChange}
@@ -36,7 +46,7 @@ const StepColorPiel = (props) => {
                         color="primary"
                     />Tipo I
                 </div>
-                <div style={{ backgroundColor: '#ffeccb', width: '150px' }}>
+                <div style={{ backgroundColor: '#ffeccb', width: '150px', color: "black", fontWeight: 900 }}>
                     <Radio
                         checked={selectedValue === 'Tipo II'}
                         onChange={handleChange}
@@ -46,7 +56,7 @@ const StepColorPiel = (props) => {
                         color="primary"
                     />Tipo II
                 </div>
-                <div style={{ backgroundColor: '#efcf78', width: '150px' }}>
+                <div style={{ backgroundColor: '#efcf78', width: '150px', color: "black", fontWeight: 900 }}>
                     <Radio
                         checked={selectedValue === 'Tipo III'}
                         onChange={handleChange}
@@ -56,7 +66,7 @@ const StepColorPiel = (props) => {
                         inputProps={{ 'aria-label': 'D' }}
                     />Tipo III
                 </div>
-                <div style={{ backgroundColor: '#dca30d', width: '150px' }}>
+                <div style={{ backgroundColor: '#dca30d', width: '150px', color: "black", fontWeight: 900 }}>
                     <Radio
                         checked={selectedValue === 'Tipo IV'}
                         onChange={handleChange}
@@ -66,7 +76,7 @@ const StepColorPiel = (props) => {
                         inputProps={{ 'aria-label': 'E' }}
                     />Tipo IV
                 </div>
-                <div style={{ backgroundColor: '#97754f', width: '150px' }}>
+                <div style={{ backgroundColor: '#97754f', width: '150px', color: "black", fontWeight: 900 }}>
                     <Radio
                         checked={selectedValue === 'Tipo V'}
                         onChange={handleChange}
@@ -76,7 +86,7 @@ const StepColorPiel = (props) => {
                         inputProps={{ 'aria-label': 'E' }}
                     />Tipo V
                 </div>
-                <div style={{ backgroundColor: '#713906', width: '150px' }}>
+                <div style={{ backgroundColor: '#713906', width: '150px', color: "black", fontWeight: 900 }}>
                     <Radio
                         checked={selectedValue === 'Tipo VI'}
                         onChange={handleChange}
@@ -90,9 +100,7 @@ const StepColorPiel = (props) => {
                 </div>
             </div>
 
-
-
-
+            <br />
 
         </>
     )

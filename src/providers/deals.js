@@ -1,13 +1,11 @@
 const Deal = (() => {
 
-    const apiURL = 'https://tc-webapi.herokuapp.com'
+    const apiURL = 'https://tc-webapi.herokuapp.com';
     return {
-        New: async (contactid, { dealname, parte_del_cuerpo_a_tatuar, alto_del_tatuaje, ancho_del_tatuaje, color_de_tatuaje, comentarios_adicionales, color_de_piel, foto_del_tatuaje }) => {
+        New: async (contactid, { dealname, parte_del_cuerpo_a_tatuar, alto_del_tatuaje, ancho_del_tatuaje, color_de_tatuaje, comentarios_adicionales, color_de_piel, foto1, foto2, foto3 }) => {
             try {
                 const request =
                 {
-                    dealstage: '1272076',
-                    pipeline: 'default',
                     dealname,
                     parte_del_cuerpo_a_tatuar,
                     alto_del_tatuaje,
@@ -15,7 +13,9 @@ const Deal = (() => {
                     color_de_tatuaje,
                     comentarios_adicionales,
                     color_de_piel,
-                    foto_del_tatuaje
+                    foto1,
+                    foto2,
+                    foto3
                 };
                 const httpMethod =
                 {

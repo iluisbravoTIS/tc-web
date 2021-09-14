@@ -25,24 +25,36 @@ const StepComentarios = (props) => {
   const classes = useStyles();
   const [value, setValue] = React.useState("");
 
+  React.useEffect(() => {
+    setValue(wizard.comentarios);
+    setDisabled(false);
+    // if (wizard.comentarios !== "" && wizard.comentarios.length > 0) {
+    //   setValue(wizard.comentarios);
+    //   setDisabled(false);
+    // }
+    // else {
+    //   setDisabled(false);
+    // }
+  }, []);
+
   const handleChange = (event) => {
     let newText = event.target.value;
     wizard.comentarios = newText;
     setWizard(wizard);
     setValue(newText);
 
-    if (newText.length > 0) {
-      setDisabled(false);
-    }
-    else {
-      setDisabled(true);
-    }
+    // if (newText !== "" && newText.length > 0) {
+    //   setDisabled(false);
+    // }
+    // else {
+    //   setDisabled(false);
+    // }
   };
 
   return (
     <>
       <div >
-        <p>Si gustas, agrega descripción o comentarios sobre tu tatuaje.</p>
+        <p>Si gustas, agrega descripción o comentarios sobre tu tatuaje (opcional).</p>
       </div>
 
       <Grid container spacing={3}>
@@ -64,7 +76,7 @@ const StepComentarios = (props) => {
           </TextField>
         </Grid>
       </Grid>
-
+      <br />
 
     </>
   )

@@ -2,27 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Styles = styled.div`
-    .height100{         
-        min-height: 100vh;
-        width: 100%;      
-    }
-
-    .img{
-        object-fit: cover;
-        height: inherit;
-        width: 100%;
-        /* position: absolute; */
-        padding: 0px !important;
-        z-index: -1;
-        /* opacity: 0.8; */
-        background-image: url("./assets/Back.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
     .sectionContent{
         position: relative;
-        padding: 30px
+        /* padding: 30px */
     }
 `;
 
@@ -32,17 +14,16 @@ const Instagram = () => {
     return (
         <>
             <Styles>
-                <div className="height100 img" id="Instagram">
+                <div className="height100 bg-orange-opacity" id="Instagram">
                     {/* <img alt="cotizador.img" className="" src={img} /> */}
-                    <div className="sectionContent">
-                        <h2 className="textTitle text">
+                    <div className="sectionContent p-4">
+                        <h2 className="textTitle text titleOrangeNeon">
                             {/* Encuéntranos */}
                             INSTAGRAM
                         </h2>
 
                         <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" className="crt-logo crt-tag">Powered by Curator.io</a></div>
                     </div>
-
                 </div>
             </Styles>
         </>

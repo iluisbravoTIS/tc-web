@@ -1,8 +1,15 @@
 import React from 'react';
 
 const StepNombre = (props) => {
+    let wizard = props.wizard;
+    let setWizard = props.setWizard;
+    let setDisabled = props.setDisabledFunc;
 
-    let setWizardData = props.setData;
+    React.useEffect(() => {
+
+        setDisabled(false);
+
+    }, []);
 
     return (
         <>

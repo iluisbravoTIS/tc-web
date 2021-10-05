@@ -219,6 +219,8 @@ const VerticalLinearStepper = (props) => {
     const today = new Date();
     const dealResult = await DealsService.New(contactData.id,
       {
+        nombre: contactData.firstname,
+        apellido: contactData.lastname,
         dealname: `${contactData.firstname} ${contactData.lastname} ${Math.floor(today)}`,
         parte_del_cuerpo_a_tatuar: wizardData.ubicacionTatuaje,
         alto_del_tatuaje: Number(wizardData.alto),

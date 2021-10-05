@@ -63,7 +63,7 @@ const StepNombre = (props) => {
                 break;
         }
 
-        if (wizard.nombreCliente && wizard.apellidoCliente && wizard.telefonoCliente && validateEmail(wizard.emailCliente)) {
+        if (wizard.nombreCliente && wizard.apellidoCliente && wizard.telefonoCliente.length === 10 && validateEmail(wizard.emailCliente)) {
             setDisabled(false);
         }
         else {
@@ -80,7 +80,6 @@ const StepNombre = (props) => {
             whats,
             email
         };
-        console.log(info, "Nombre");
     }
 
     return (
